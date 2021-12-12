@@ -1,10 +1,8 @@
 package com.uestc.monitor.service.impl;
 
 import com.uestc.monitor.mapper.TempHmdRecordMapper;
-import com.uestc.monitor.pojo.MonitorUser;
 import com.uestc.monitor.pojo.TempHmdRecord;
 import com.uestc.monitor.service.TempService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -43,4 +41,10 @@ public class TempServiceImpl implements TempService {
     public TempHmdRecord selectRecentRecord(Integer userid) {
         return tempHmdRecordMapper.selectRecentRecord(userid);
     }
+
+    @Override
+    public Object[] select5hHmd(Integer userid) {
+        return tempHmdRecordMapper.select5hHmd(userid);
+    }
+
 }

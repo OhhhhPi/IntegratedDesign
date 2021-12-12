@@ -7,11 +7,13 @@ import com.uestc.monitor.service.impl.SmokeServiceImpl;
 import com.uestc.monitor.util.ExceptionHandler;
 import com.uestc.monitor.util.RequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.sql.Date;
 
 @RestController
 @RequestMapping("/smoke")
@@ -23,6 +25,7 @@ public class SmokeController {
     }
 
     @RequestMapping("/getSmoke")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public JSONObject getSmoke(HttpServletRequest request){
         try {
             JSONObject jsonRequest = RequestHandler.receiveJson(request);
@@ -33,7 +36,7 @@ public class SmokeController {
                 System.out.println("Received JSONString:" + jsonRequest.toString());
             }
             int userID = jsonRequest.getIntValue("userID");
-            String time = jsonRequest.getString("time");
+            Date time = jsonRequest.getSqlDate("time");
             boolean smoke = jsonRequest.getBoolean("smoke");
 
             SmokeRecord smokeRecord = new SmokeRecord();

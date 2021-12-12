@@ -7,11 +7,11 @@ import com.uestc.monitor.service.impl.TempServiceImpl;
 import com.uestc.monitor.util.ExceptionHandler;
 import com.uestc.monitor.util.RequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.sql.Date;
 
 /**
  * 接收树莓派传来的温湿度数据并且存储到数据表中
@@ -23,6 +23,7 @@ public class temperatureController {
     @Autowired
     private TempServiceImpl tempService;
     @RequestMapping("/getTemp")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public JSONObject getTemp(HttpServletRequest request) {
         try {
             JSONObject jsonRequest = RequestHandler.receiveJson(request);
@@ -36,13 +37,11 @@ public class temperatureController {
             int temp = jsonRequest.getIntValue("temp");
             int hmd = jsonRequest.getIntValue("hmd");
             int userID = jsonRequest.getIntValue("userID");
-            Date time = jsonRequest.getSqlDate("time");
 
             TempHmdRecord tempHumRecord = new TempHmdRecord();
             tempHumRecord.setTemp(temp);
             tempHumRecord.setHmd(hmd);
             tempHumRecord.setUserid(userID);
-            tempHumRecord.setTime(time);
 
             tempService.insert(tempHumRecord);
 
@@ -52,6 +51,5 @@ public class temperatureController {
         } catch (IOException e) {
             return ExceptionHandler.exceptionReturn(MonitorConfig.getHmdFailCodeTypeUnknown,"ErrorInHttpIO");
         }
-
     }
 }

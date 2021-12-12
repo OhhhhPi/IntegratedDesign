@@ -51,4 +51,13 @@
     order by RecordID desc
     limit 1
   </select>
+  <select id="select5hHmd" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select hmd
+    from TempHmdRecord
+    where MID(time FROM -5 FOR 2)='00'
+    and userID = #{userid,jdbcType=INTEGER}
+    group by MID(time from -8 for 2)
+    order by RecordID desc
+    limit 5
+  </select>
 </mapper>

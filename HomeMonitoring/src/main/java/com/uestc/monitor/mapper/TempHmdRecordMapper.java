@@ -15,4 +15,6 @@ public interface TempHmdRecordMapper {
     int updateByPrimaryKey(TempHmdRecord record);
 
     TempHmdRecord selectRecentRecord(Integer userid);
+
+    Object[] select5hHmd(Integer userid);
 }

@@ -1,6 +1,7 @@
 package com.uestc.monitor.service;
 
 import com.uestc.monitor.pojo.TempHmdRecord;
+
 import java.util.List;
 
 public interface TempService {
@@ -16,4 +17,6 @@ public interface TempService {
     int updateByPrimaryKey(TempHmdRecord record);
 
     TempHmdRecord selectRecentRecord(Integer userid);
+
+    Object[] select5hHmd(Integer userid);
 }
