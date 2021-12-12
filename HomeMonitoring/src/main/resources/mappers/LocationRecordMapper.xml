@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uestc.monitor.mapper.LocationRecordMapper">
+  <resultMap id="BaseResultMap" type="com.uestc.monitor.pojo.LocationRecord">
+    <id column="lRecordID" jdbcType="BIGINT" property="lrecordid" />
+    <result column="userID" jdbcType="INTEGER" property="userid" />
+    <result column="location" jdbcType="BIT" property="location" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from LocationRecord
+    where lRecordID = #{lrecordid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.uestc.monitor.pojo.LocationRecord">
+    <selectKey keyProperty="lrecordid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into LocationRecord (userID, location, time
+      )
+    values (#{userid,jdbcType=INTEGER}, #{location,jdbcType=BIT}, #{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.uestc.monitor.pojo.LocationRecord">
+    update LocationRecord
+    set userID = #{userid,jdbcType=INTEGER},
+      location = #{location,jdbcType=BIT},
+      time = #{time,jdbcType=TIMESTAMP}
+    where lRecordID = #{lrecordid,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select lRecordID, userID, location, time
+    from LocationRecord
+    where lRecordID = #{lrecordid,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select lRecordID, userID, location, time
+    from LocationRecord
+  </select>
+  <select id="selectRecentRecord" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select lRecordID, userID, location, time
+    from LocationRecord
+    where userID = #{userid,jdbcType=INTEGER}
+    order by lRecordID desc
+    limit 1
+  </select>
+</mapper>

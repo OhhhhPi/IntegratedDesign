@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uestc.monitor.mapper.OverlapStatusRecordMapper">
+  <resultMap id="BaseResultMap" type="com.uestc.monitor.pojo.OverlapStatusRecord">
+    <id column="oRecordID" jdbcType="BIGINT" property="orecordid" />
+    <result column="userID" jdbcType="INTEGER" property="userid" />
+    <result column="overlapStatus" jdbcType="BIT" property="overlapstatus" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from OverlapStatusRecord
+    where oRecordID = #{orecordid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.uestc.monitor.pojo.OverlapStatusRecord">
+    <selectKey keyProperty="orecordid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into OverlapStatusRecord (userID, overlapStatus, time
+      )
+    values (#{userid,jdbcType=INTEGER}, #{overlapstatus,jdbcType=BIT}, #{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.uestc.monitor.pojo.OverlapStatusRecord">
+    update OverlapStatusRecord
+    set userID = #{userid,jdbcType=INTEGER},
+      overlapStatus = #{overlapstatus,jdbcType=BIT},
+      time = #{time,jdbcType=TIMESTAMP}
+    where oRecordID = #{orecordid,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select oRecordID, userID, overlapStatus, time
+    from OverlapStatusRecord
+    where oRecordID = #{orecordid,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select oRecordID, userID, overlapStatus, time
+    from OverlapStatusRecord
+  </select>
+  <select id="selectRecentRecord" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select oRecordID, userID, overlapStatus, time
+    from OverlapStatusRecord
+    where userID = #{userid,jdbcType=INTEGER}
+    order by oRecordID desc
+    limit 1
+  </select>
+</mapper>
