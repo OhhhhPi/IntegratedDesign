@@ -18,5 +18,5 @@ public interface TempService {
 
     TempHmdRecord selectRecentRecord(Integer userid);
 
-    Object[] select5hHmd(Integer userid);
+    Object[] select12hHmd(Integer userid);
 }

@@ -17,7 +17,7 @@ public class HumidityController {
 
     @PostMapping("/queryHumidity")
     public @ResponseBody Object getHumidity(@RequestParam Integer userID){
-        Object[] hmdRequest = tempService.select5hHmd(userID);
+        Object[] hmdRequest = tempService.select12hHmd(userID);
         return new ResponseModel().setStatus(200).setMsg("ok").setData(hmdRequest);
     }
 }
