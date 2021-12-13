@@ -43,8 +43,12 @@ public class TempServiceImpl implements TempService {
     }
 
     @Override
-    public Object[] select12hHmd(Integer userid) {
+    public int[] select12hHmd(Integer userid) {
         return tempHmdRecordMapper.select12hHmd(userid);
     }
 
+    @Override
+    public int[] select12hTemp(Integer userid) {
+        return tempHmdRecordMapper.select12hTemp(userid);
+    }
 }

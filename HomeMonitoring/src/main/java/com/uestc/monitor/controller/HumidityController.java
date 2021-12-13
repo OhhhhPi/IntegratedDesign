@@ -16,8 +16,14 @@ public class HumidityController {
     }
 
     @PostMapping("/queryHumidity")
-    public @ResponseBody Object getHumidity(@RequestParam Integer userID){
-        Object[] hmdRequest = tempService.select12hHmd(userID);
+    public @ResponseBody ResponseModel getHumidity(@RequestParam Integer userID){
+        int[] hmdRequest = tempService.select12hHmd(userID);
+        if(hmdRequest.length==0) return new ResponseModel().setStatus(400).setMsg("RecordNotFound").setData(null);
         return new ResponseModel().setStatus(200).setMsg("ok").setData(hmdRequest);
+    }
+    @PostMapping("/queryTemperature")
+    public @ResponseBody ResponseModel getTemperature(@RequestParam Integer userID){
+        int[] tempRequest = tempService.select12hTemp(userID);
+        return new ResponseModel().setStatus(200).setMsg("ok").setData(tempRequest);
     }
 }

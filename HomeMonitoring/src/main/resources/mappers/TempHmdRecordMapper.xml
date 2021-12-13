@@ -60,4 +60,13 @@
     order by RecordID desc
     limit 12
   </select>
+  <select id="select12hTemp" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select temp
+    from TempHmdRecord
+    where MID(time FROM -5 FOR 2)='00'
+      and userID = #{userid,jdbcType=INTEGER}
+    group by MID(time from -8 for 2)
+    order by RecordID desc
+    limit 12
+  </select>
 </mapper>

@@ -16,5 +16,7 @@ public interface TempHmdRecordMapper {
 
     TempHmdRecord selectRecentRecord(Integer userid);
 
-    Object[] select12hHmd(Integer userid);
+    int[] select12hHmd(Integer userid);
+
+    int[] select12hTemp(Integer userid);
 }
