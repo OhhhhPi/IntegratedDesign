@@ -64,15 +64,15 @@ public class QueryStatusController {
         boolean hss = TmpHmdRequest.getHumiditysensor();
         boolean smk = smokeRequest.getSmoke();
         boolean sms = smokeRequest.getSmokesensor();
-        boolean wd = windowRequest.getWindow();
+        boolean ol = windowRequest.getOverlap();
         boolean lct = locationRequest.getLocation();
-        if(smk||wd){
+        if(smk||ol){
             warnFlag = true;
         }
 
         statusResponseModel status = new statusResponseModel().setTemperature(temp).setTemperatureSensor(tss)
                 .setHumidity(hmd).setHumiditySensor(hss).setSmoke(smk)
-                .setSmokeSensor(sms).setWindow(wd).setLocation(lct).setWarnflag(warnFlag);
+                .setSmokeSensor(sms).setWindow(ol).setLocation(lct).setWarnflag(warnFlag);
 
         return new ResponseModel().setStatus(200).setMsg("ok").setData(status);
     }

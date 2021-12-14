@@ -11,29 +11,10 @@ import java.util.List;
 public class WindowServiceImpl implements WindowService {
     @Resource
     private WindowRecordMapper windowRecordMapper;
-    @Override
-    public int deleteByPrimaryKey(Long wrecordid) {
-        return windowRecordMapper.deleteByPrimaryKey(wrecordid);
-    }
 
     @Override
     public int insert(WindowRecord record) {
         return windowRecordMapper.insert(record);
-    }
-
-    @Override
-    public WindowRecord selectByPrimaryKey(Long wrecordid) {
-        return windowRecordMapper.selectByPrimaryKey(wrecordid);
-    }
-
-    @Override
-    public List<WindowRecord> selectAll() {
-        return windowRecordMapper.selectAll();
-    }
-
-    @Override
-    public int updateByPrimaryKey(WindowRecord record) {
-        return windowRecordMapper.updateByPrimaryKey(record);
     }
 
     @Override
