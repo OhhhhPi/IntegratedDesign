@@ -1,4 +1,4 @@
-package com.uestc.monitor.pojo;
+package com.uestc.monitor.domain.pojo;
 
 public class MonitorUser {
     private Integer userid;

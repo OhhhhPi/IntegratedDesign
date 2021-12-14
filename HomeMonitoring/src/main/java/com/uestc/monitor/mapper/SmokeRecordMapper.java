@@ -1,8 +1,11 @@
 package com.uestc.monitor.mapper;
 
-import com.uestc.monitor.pojo.SmokeRecord;
+import com.uestc.monitor.domain.pojo.SmokeRecord;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
+@Mapper
 public interface SmokeRecordMapper {
     int deleteByPrimaryKey(Long srecordid);
 

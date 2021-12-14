@@ -1,10 +1,16 @@
 package com.uestc.monitor.controller;
 
 import com.uestc.monitor.config.MonitorConfig;
-import com.uestc.monitor.model.ResponseModel;
-import com.uestc.monitor.model.statusResponseModel;
-import com.uestc.monitor.pojo.*;
-import com.uestc.monitor.service.impl.*;
+import com.uestc.monitor.domain.model.ResponseModel;
+import com.uestc.monitor.domain.model.statusResponseModel;
+import com.uestc.monitor.domain.pojo.LocationRecord;
+import com.uestc.monitor.domain.pojo.SmokeRecord;
+import com.uestc.monitor.domain.pojo.TempHmdRecord;
+import com.uestc.monitor.domain.pojo.WindowRecord;
+import com.uestc.monitor.service.LocationServiceImpl;
+import com.uestc.monitor.service.SmokeServiceImpl;
+import com.uestc.monitor.service.TempServiceImpl;
+import com.uestc.monitor.service.WindowServiceImpl;
 import com.uestc.monitor.util.ExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

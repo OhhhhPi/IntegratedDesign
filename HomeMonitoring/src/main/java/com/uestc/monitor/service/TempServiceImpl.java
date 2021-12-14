@@ -1,7 +1,7 @@
-package com.uestc.monitor.service.impl;
+package com.uestc.monitor.service;
 
 import com.uestc.monitor.mapper.TempHmdRecordMapper;
-import com.uestc.monitor.pojo.TempHmdRecord;
+import com.uestc.monitor.domain.pojo.TempHmdRecord;
 import com.uestc.monitor.service.TempService;
 import org.springframework.stereotype.Service;
 

@@ -2,13 +2,11 @@ package com.uestc.monitor.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.uestc.monitor.config.MonitorConfig;
-import com.uestc.monitor.pojo.MonitorUser;
-import com.uestc.monitor.service.impl.UserServiceImpl;
+import com.uestc.monitor.domain.pojo.MonitorUser;
+import com.uestc.monitor.service.UserServiceImpl;
 import com.uestc.monitor.util.ExceptionHandler;
 import com.uestc.monitor.util.RequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

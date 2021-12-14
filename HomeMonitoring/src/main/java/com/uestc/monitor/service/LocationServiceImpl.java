@@ -1,7 +1,7 @@
-package com.uestc.monitor.service.impl;
+package com.uestc.monitor.service;
 
 import com.uestc.monitor.mapper.LocationRecordMapper;
-import com.uestc.monitor.pojo.LocationRecord;
+import com.uestc.monitor.domain.pojo.LocationRecord;
 import com.uestc.monitor.service.LocationService;
 import org.springframework.stereotype.Service;
 

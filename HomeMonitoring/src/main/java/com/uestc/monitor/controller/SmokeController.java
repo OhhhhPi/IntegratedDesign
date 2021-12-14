@@ -2,11 +2,10 @@ package com.uestc.monitor.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.uestc.monitor.config.MonitorConfig;
-import com.uestc.monitor.pojo.SmokeRecord;
-import com.uestc.monitor.service.impl.SmokeServiceImpl;
+import com.uestc.monitor.domain.pojo.SmokeRecord;
+import com.uestc.monitor.service.SmokeServiceImpl;
 import com.uestc.monitor.util.ExceptionHandler;
 import com.uestc.monitor.util.RequestHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

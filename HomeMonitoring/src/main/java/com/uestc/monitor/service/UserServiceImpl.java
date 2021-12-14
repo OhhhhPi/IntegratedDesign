@@ -1,9 +1,8 @@
-package com.uestc.monitor.service.impl;
+package com.uestc.monitor.service;
 
 import com.uestc.monitor.mapper.MonitorUserMapper;
-import com.uestc.monitor.pojo.MonitorUser;
+import com.uestc.monitor.domain.pojo.MonitorUser;
 import com.uestc.monitor.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

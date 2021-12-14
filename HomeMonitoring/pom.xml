@@ -22,7 +22,7 @@
         <targetMapperPackage>tk.mybatis.mapper.mapper</targetMapperPackage>
         <targetModelPackage>tk.mybatis.mapper.model</targetModelPackage>
         <!--  XML生成路径  -->
-        <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+        <targetResourcesProject>${basedir}/src/main/java/com/uestc/monitor/mapper</targetResourcesProject>
         <targetXMLPackage>mapper</targetXMLPackage>
         <!--  依赖版本  -->
         <mapper.version>1.0.0</mapper.version>
@@ -97,6 +97,25 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.yml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,6 +1,6 @@
 package com.uestc.monitor.service;
 
-import com.uestc.monitor.pojo.TempHmdRecord;
+import com.uestc.monitor.domain.pojo.TempHmdRecord;
 
 import java.util.List;
 

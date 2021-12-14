@@ -1,7 +1,7 @@
 package com.uestc.monitor.controller;
 
-import com.uestc.monitor.model.ResponseModel;
-import com.uestc.monitor.service.impl.TempServiceImpl;
+import com.uestc.monitor.domain.model.ResponseModel;
+import com.uestc.monitor.service.TempServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +18,13 @@ public class HumidityController {
     @PostMapping("/queryHumidity")
     public @ResponseBody ResponseModel getHumidity(@RequestParam Integer userID){
         int[] hmdRequest = tempService.select12hHmd(userID);
-        if(hmdRequest.length==0) return new ResponseModel().setStatus(400).setMsg("RecordNotFound").setData(null);
+        if(hmdRequest.length==0) return new ResponseModel().setStatus(400).setMsg("RecordNotFound");
         return new ResponseModel().setStatus(200).setMsg("ok").setData(hmdRequest);
     }
     @PostMapping("/queryTemperature")
     public @ResponseBody ResponseModel getTemperature(@RequestParam Integer userID){
         int[] tempRequest = tempService.select12hTemp(userID);
+        if(tempRequest.length==0) return new ResponseModel().setStatus(400).setMsg("RecordNotFound");
         return new ResponseModel().setStatus(200).setMsg("ok").setData(tempRequest);
     }
 }

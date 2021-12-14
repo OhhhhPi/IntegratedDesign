@@ -2,8 +2,10 @@ package com.uestc.monitor.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.uestc.monitor.config.MonitorConfig;
-import com.uestc.monitor.pojo.TempHmdRecord;
-import com.uestc.monitor.service.impl.TempServiceImpl;
+import com.uestc.monitor.domain.pojo.AbnormalRecord;
+import com.uestc.monitor.domain.pojo.TempHmdRecord;
+import com.uestc.monitor.service.AbnormalServiceImpl;
+import com.uestc.monitor.service.TempServiceImpl;
 import com.uestc.monitor.util.ExceptionHandler;
 import com.uestc.monitor.util.RequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,14 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/temperature")
 public class temperatureController {
+    private final TempServiceImpl tempService;
+    private final AbnormalServiceImpl abnormalService;
     @Autowired
-    private TempServiceImpl tempService;
+    public temperatureController(TempServiceImpl tempService,AbnormalServiceImpl abnormalService) {
+        this.tempService = tempService;
+        this.abnormalService = abnormalService;
+    }
+
     @RequestMapping("/getTemp")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public JSONObject getTemp(HttpServletRequest request) {
@@ -37,11 +45,31 @@ public class temperatureController {
             int temp = jsonRequest.getIntValue("temp");
             int hmd = jsonRequest.getIntValue("hmd");
             int userID = jsonRequest.getIntValue("userID");
+            boolean tss = jsonRequest.getBoolean("temperatureSensor");
+            boolean hms = jsonRequest.getBoolean("humiditySensor");
+
+            if(temp>32){
+                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("temperature").setAbnormalContent("High");
+                abnormalService.insert(aRecord);
+            }else if(temp<5){
+                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("temperature").setAbnormalContent("Low");
+                abnormalService.insert(aRecord);
+            }
+
+            if (hmd < 20){
+                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("Humidity").setAbnormalContent("Low");
+                abnormalService.insert(aRecord);
+            } else if (hmd > 80){
+                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("Humidity").setAbnormalContent("High");
+                abnormalService.insert(aRecord);
+            }
 
             TempHmdRecord tempHumRecord = new TempHmdRecord();
             tempHumRecord.setTemp(temp);
             tempHumRecord.setHmd(hmd);
             tempHumRecord.setUserid(userID);
+            tempHumRecord.setTemperaturesensor(tss);
+            tempHumRecord.setHumiditysensor(hms);
 
             tempService.insert(tempHumRecord);
 

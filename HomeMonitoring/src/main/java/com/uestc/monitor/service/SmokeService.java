@@ -1,7 +1,6 @@
 package com.uestc.monitor.service;
 
-import com.uestc.monitor.pojo.SmokeRecord;
-import org.springframework.stereotype.Service;
+import com.uestc.monitor.domain.pojo.SmokeRecord;
 
 import java.util.List;
 public interface SmokeService {

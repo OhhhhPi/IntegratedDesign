@@ -1,4 +1,4 @@
-package com.uestc.monitor.model;
+package com.uestc.monitor.domain.model;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

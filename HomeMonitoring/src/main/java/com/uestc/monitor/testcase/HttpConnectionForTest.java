@@ -1,7 +1,7 @@
 package com.uestc.monitor.testcase;
 
-import net.sf.json.JSONObject;
 
+import com.alibaba.fastjson.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -50,7 +50,7 @@ public class HttpConnectionForTest {
             System.out.println("error occur when establish http connection");
             e.printStackTrace();
         }
-        jsonRecieve = JSONObject.fromObject(sb.toString());
+        jsonRecieve = JSONObject.parseObject(sb.toString());
         try {
             System.out.println(jsonRecieve.toString().substring(0, 100));
         } catch (StringIndexOutOfBoundsException e) {

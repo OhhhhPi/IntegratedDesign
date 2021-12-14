@@ -1,6 +1,6 @@
 package com.uestc.monitor.service;
 
-import com.uestc.monitor.pojo.MonitorUser;
+import com.uestc.monitor.domain.pojo.MonitorUser;
 
 import java.util.List;
 

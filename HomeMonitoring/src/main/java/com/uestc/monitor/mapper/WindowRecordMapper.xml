@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uestc.monitor.mapper.WindowRecordMapper">
-  <resultMap id="BaseResultMap" type="com.uestc.monitor.pojo.WindowRecord">
+  <resultMap id="BaseResultMap" type="com.uestc.monitor.domain.pojo.WindowRecord">
     <id column="wRecordID" jdbcType="BIGINT" property="wrecordid" />
     <result column="userID" jdbcType="INTEGER" property="userid" />
     <result column="window" jdbcType="BIT" property="window" />
@@ -11,7 +11,7 @@
     delete from WindowRecord
     where wRecordID = #{wrecordid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.uestc.monitor.pojo.WindowRecord">
+  <insert id="insert" parameterType="com.uestc.monitor.domain.pojo.WindowRecord">
     <selectKey keyProperty="wrecordid" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -20,7 +20,7 @@
     values (#{userid,jdbcType=INTEGER}, #{window,jdbcType=BIT}, #{time,jdbcType=TIMESTAMP}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.uestc.monitor.pojo.WindowRecord">
+  <update id="updateByPrimaryKey" parameterType="com.uestc.monitor.domain.pojo.WindowRecord">
     update WindowRecord
     set userID = #{userid,jdbcType=INTEGER},
       window = #{window,jdbcType=BIT},

@@ -1,6 +1,6 @@
 package com.uestc.monitor.service;
 
-import com.uestc.monitor.pojo.LocationRecord;
+import com.uestc.monitor.domain.pojo.LocationRecord;
 
 import java.util.List;
 

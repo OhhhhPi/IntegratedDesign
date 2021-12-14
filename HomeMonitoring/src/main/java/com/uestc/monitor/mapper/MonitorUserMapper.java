@@ -1,8 +1,11 @@
 package com.uestc.monitor.mapper;
 
-import com.uestc.monitor.pojo.MonitorUser;
+import com.uestc.monitor.domain.pojo.MonitorUser;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
+@Mapper
 public interface MonitorUserMapper {
     int deleteByPrimaryKey(Integer userid);
 

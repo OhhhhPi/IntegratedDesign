@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uestc.monitor.mapper.AbnormalRecordMapper">
+    <resultMap id="abnormalResponseVO" type="com.uestc.monitor.domain.vo.abnormalResponseVO">
+        <result column="abnormalTime" property="abnormalTime"/>
+        <result column="abnormalType" property="abnormalType"/>
+        <result column="abnormalContent" property="abnormalContent"/>
+    </resultMap>
+    <insert id="insert">
+        insert into AbnormalRecord
+        values(default,
+        #{aRecord.abnormalUserID},
+        #{aRecord.abnormalType},
+        #{aRecord.abnormalContent},
+        current_timestamp)
+    </insert>
+    <select id="selectMonthlyRecord" resultMap="abnormalResponseVO">
+        select abnormalTime,abnormalType,abnormalContent
+        from AbnormalRecord
+        where abnormalUserID=#{userID}
+        and MID(abnormalTime from 6 for 2)=mid(current_timestamp from 6 for 2);
+    </select>
+</mapper>

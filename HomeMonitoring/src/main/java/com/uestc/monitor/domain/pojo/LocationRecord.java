@@ -1,4 +1,4 @@
-package com.uestc.monitor.pojo;
+package com.uestc.monitor.domain.pojo;
 
 import java.util.Date;
 

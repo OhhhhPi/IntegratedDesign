@@ -1,7 +1,7 @@
-package com.uestc.monitor.service.impl;
+package com.uestc.monitor.service;
 
 import com.uestc.monitor.mapper.WindowRecordMapper;
-import com.uestc.monitor.pojo.WindowRecord;
+import com.uestc.monitor.domain.pojo.WindowRecord;
 import com.uestc.monitor.service.WindowService;
 import org.springframework.stereotype.Service;
 
