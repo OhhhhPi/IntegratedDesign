@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class AbnormalServiceImpl implements AbnormalService{
+public class AbnormalServiceImpl implements AbnormalService {
     @Resource
     private AbnormalRecordMapper abnormalRecordMapper;
 

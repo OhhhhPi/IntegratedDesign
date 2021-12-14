@@ -39,22 +39,23 @@ public class QueryStatusController {
     }
 
     @RequestMapping(path = "/queryStatus")
-    public @ResponseBody Object testGetState(@RequestParam Integer userID){
+    public @ResponseBody
+    Object testGetState(@RequestParam Integer userID) {
         TempHmdRecord TmpHmdRequest = tempService.selectRecentRecord(userID);
-        if(TmpHmdRequest == null){
-            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound,"TmpHmdRecordNotFound");
+        if (TmpHmdRequest == null) {
+            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound, "TmpHmdRecordNotFound");
         }
         SmokeRecord smokeRequest = smokeService.selectRecentRecord(userID);
-        if(smokeRequest == null){
-            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound,"SmokeRecordNotFound");
+        if (smokeRequest == null) {
+            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound, "SmokeRecordNotFound");
         }
         WindowRecord windowRequest = windowService.selectRecentRecord(userID);
-        if(windowRequest == null){
-            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound,"WindowRecordNotFound");
+        if (windowRequest == null) {
+            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound, "WindowRecordNotFound");
         }
         LocationRecord locationRequest = locationService.selectRecentRecord(userID);
-        if(locationRequest == null){
-            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound,"LocationRequestNotFound");
+        if (locationRequest == null) {
+            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound, "LocationRequestNotFound");
         }
 
         boolean warnFlag = false;
@@ -66,7 +67,7 @@ public class QueryStatusController {
         boolean sms = smokeRequest.getSmokesensor();
         boolean ol = windowRequest.getOverlap();
         boolean lct = locationRequest.getLocation();
-        if(smk||ol){
+        if (smk || ol) {
             warnFlag = true;
         }
 

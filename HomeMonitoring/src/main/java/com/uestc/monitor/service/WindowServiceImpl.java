@@ -1,12 +1,11 @@
 package com.uestc.monitor.service;
 
-import com.uestc.monitor.mapper.WindowRecordMapper;
 import com.uestc.monitor.domain.pojo.WindowRecord;
-import com.uestc.monitor.service.WindowService;
+import com.uestc.monitor.mapper.WindowRecordMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
+
 @Service
 public class WindowServiceImpl implements WindowService {
     @Resource

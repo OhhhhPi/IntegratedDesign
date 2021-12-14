@@ -1,16 +1,17 @@
 package com.uestc.monitor.service;
 
-import com.uestc.monitor.mapper.LocationRecordMapper;
 import com.uestc.monitor.domain.pojo.LocationRecord;
-import com.uestc.monitor.service.LocationService;
+import com.uestc.monitor.mapper.LocationRecordMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 @Service
 public class LocationServiceImpl implements LocationService {
     @Resource
     private LocationRecordMapper locationRecordMapper;
+
     @Override
     public int deleteByPrimaryKey(Long lrecordid) {
         return locationRecordMapper.deleteByPrimaryKey(lrecordid);

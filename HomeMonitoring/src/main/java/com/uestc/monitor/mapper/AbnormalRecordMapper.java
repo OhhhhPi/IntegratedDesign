@@ -10,5 +10,6 @@ import java.util.List;
 @Mapper
 public interface AbnormalRecordMapper {
     boolean insert(@Param("aRecord") AbnormalRecord aRecord);
+
     List<abnormalResponseVO> selectMonthlyRecord(Integer userID);
 }

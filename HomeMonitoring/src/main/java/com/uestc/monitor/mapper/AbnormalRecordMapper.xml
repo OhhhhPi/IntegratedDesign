@@ -8,16 +8,16 @@
     </resultMap>
     <insert id="insert">
         insert into AbnormalRecord
-        values(default,
-        #{aRecord.abnormalUserID},
-        #{aRecord.abnormalType},
-        #{aRecord.abnormalContent},
-        current_timestamp)
+        values (default,
+                #{aRecord.abnormalUserID},
+                #{aRecord.abnormalType},
+                #{aRecord.abnormalContent},
+                current_timestamp)
     </insert>
     <select id="selectMonthlyRecord" resultMap="abnormalResponseVO">
-        select abnormalTime,abnormalType,abnormalContent
+        select abnormalTime, abnormalType, abnormalContent
         from AbnormalRecord
-        where abnormalUserID=#{userID}
-        and MID(abnormalTime from 6 for 2)=mid(current_timestamp from 6 for 2);
+        where abnormalUserID = #{userID}
+          and MID(abnormalTime from 6 for 2) = mid(current_timestamp from 6 for 2);
     </select>
 </mapper>

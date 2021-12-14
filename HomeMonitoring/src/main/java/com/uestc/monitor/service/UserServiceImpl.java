@@ -1,12 +1,12 @@
 package com.uestc.monitor.service;
 
-import com.uestc.monitor.mapper.MonitorUserMapper;
 import com.uestc.monitor.domain.pojo.MonitorUser;
-import com.uestc.monitor.service.UserService;
+import com.uestc.monitor.mapper.MonitorUserMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Resource

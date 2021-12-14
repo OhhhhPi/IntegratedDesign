@@ -25,14 +25,14 @@ public class SmokeController {
 
     @RequestMapping("/getSmoke")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public JSONObject getSmoke(HttpServletRequest request){
+    public JSONObject getSmoke(HttpServletRequest request) {
         try {
             JSONObject jsonRequest = RequestHandler.receiveJson(request);
             JSONObject jsonResponse = new JSONObject();
             try {
                 System.out.println("Received JSONString:" + jsonRequest.toString().substring(0, 100));
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("Received JSONString:" + jsonRequest.toString());
+                System.out.println("Received JSONString:" + jsonRequest);
             }
             int userID = jsonRequest.getIntValue("userID");
             Date time = jsonRequest.getSqlDate("time");
@@ -49,7 +49,7 @@ public class SmokeController {
             System.out.println("Get smoke successfully");
             return jsonResponse;
         } catch (IOException e) {
-            return ExceptionHandler.exceptionReturn(MonitorConfig.getSmokeFailCodeTypeUnknown,"ErrorInHttpIO");
+            return ExceptionHandler.exceptionReturn(MonitorConfig.getSmokeFailCodeTypeUnknown, "ErrorInHttpIO");
         }
 
     }

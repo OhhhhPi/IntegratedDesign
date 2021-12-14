@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uestc.monitor.mapper.WindowRecordMapper">
-  <resultMap id="WindowRecord" type="com.uestc.monitor.domain.pojo.WindowRecord">
-    <id column="wRecordID" jdbcType="BIGINT" property="wrecordid" />
-    <result column="userID" jdbcType="INTEGER" property="userid" />
-    <result column="window" jdbcType="BIT" property="window" />
-    <result column="time" jdbcType="TIMESTAMP" property="time" />
-  </resultMap>
-  <insert id="insert">
-    insert into WindowRecord (userID, Overlap, time)
-    values (#{wRecord.userid}, #{wRecord.Overlap}, current_timestamp)
-  </insert>
-  <select id="selectRecentRecord" parameterType="java.lang.Integer" resultMap="WindowRecord">
-    select wRecordID, userID, Overlap, time
-    from WindowRecord
-    where userID = #{userid,jdbcType=INTEGER}
-    order by wRecordID desc
-    limit 1
-  </select>
+    <resultMap id="WindowRecord" type="com.uestc.monitor.domain.pojo.WindowRecord">
+        <id column="wRecordID" jdbcType="BIGINT" property="wrecordid"/>
+        <result column="userID" jdbcType="INTEGER" property="userid"/>
+        <result column="window" jdbcType="BIT" property="window"/>
+        <result column="time" jdbcType="TIMESTAMP" property="time"/>
+    </resultMap>
+    <insert id="insert">
+        insert into WindowRecord (userID, Overlap, time)
+        values (#{wRecord.userid}, #{wRecord.Overlap}, current_timestamp)
+    </insert>
+    <select id="selectRecentRecord" parameterType="java.lang.Integer" resultMap="WindowRecord">
+        select wRecordID, userID, Overlap, time
+        from WindowRecord
+        where userID = #{userid,jdbcType=INTEGER}
+        order by wRecordID desc
+        limit 1
+    </select>
 </mapper>

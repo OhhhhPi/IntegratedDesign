@@ -3,6 +3,7 @@ package com.uestc.monitor.service;
 import com.uestc.monitor.domain.pojo.SmokeRecord;
 
 import java.util.List;
+
 public interface SmokeService {
     int deleteByPrimaryKey(Long srecordid);
 

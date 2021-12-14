@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
@@ -24,8 +25,9 @@ import java.io.IOException;
 public class temperatureController {
     private final TempServiceImpl tempService;
     private final AbnormalServiceImpl abnormalService;
+
     @Autowired
-    public temperatureController(TempServiceImpl tempService,AbnormalServiceImpl abnormalService) {
+    public temperatureController(TempServiceImpl tempService, AbnormalServiceImpl abnormalService) {
         this.tempService = tempService;
         this.abnormalService = abnormalService;
     }
@@ -48,18 +50,18 @@ public class temperatureController {
             boolean tss = jsonRequest.getBoolean("temperatureSensor");
             boolean hms = jsonRequest.getBoolean("humiditySensor");
 
-            if(temp>32){
+            if (temp > 32) {
                 AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("temperature").setAbnormalContent("High");
                 abnormalService.insert(aRecord);
-            }else if(temp<5){
+            } else if (temp < 5) {
                 AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("temperature").setAbnormalContent("Low");
                 abnormalService.insert(aRecord);
             }
 
-            if (hmd < 20){
+            if (hmd < 20) {
                 AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("Humidity").setAbnormalContent("Low");
                 abnormalService.insert(aRecord);
-            } else if (hmd > 80){
+            } else if (hmd > 80) {
                 AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("Humidity").setAbnormalContent("High");
                 abnormalService.insert(aRecord);
             }
@@ -73,11 +75,11 @@ public class temperatureController {
 
             tempService.insert(tempHumRecord);
 
-            jsonResponse.put("recode",MonitorConfig.interfaceReturnOK);
+            jsonResponse.put("recode", MonitorConfig.interfaceReturnOK);
             System.out.println("Get temp and hmd successfully");
             return jsonResponse;
         } catch (IOException e) {
-            return ExceptionHandler.exceptionReturn(MonitorConfig.getHmdFailCodeTypeUnknown,"ErrorInHttpIO");
+            return ExceptionHandler.exceptionReturn(MonitorConfig.getHmdFailCodeTypeUnknown, "ErrorInHttpIO");
         }
     }
 }

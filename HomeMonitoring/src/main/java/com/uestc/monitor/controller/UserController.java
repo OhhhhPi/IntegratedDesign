@@ -22,15 +22,16 @@ import java.io.IOException;
 public class UserController {
     @Autowired
     private UserServiceImpl userService;
+
     @RequestMapping("/userCheck")
     public JSONObject CheckUser(HttpServletRequest request) throws IOException {
         JSONObject jsonRequest = RequestHandler.receiveJson(request);
         JSONObject jsonResponse = new JSONObject();
 
         try {
-            System.out.println("received json request:"+jsonRequest.toString().substring(0,100));
-        }catch (IndexOutOfBoundsException e){
-            System.out.println("received json request:"+jsonRequest);
+            System.out.println("received json request:" + jsonRequest.toString().substring(0, 100));
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("received json request:" + jsonRequest);
         }
 
         int userid = jsonRequest.getIntValue("userid");
@@ -38,14 +39,14 @@ public class UserController {
 
         MonitorUser LoginRequest = userService.selectByPrimaryKey(userid);
 
-        if(LoginRequest == null){
-            return ExceptionHandler.exceptionReturn(MonitorConfig.LoginFailCodeTypeUserNotFound,"UserNotFound");
-        } else if(!LoginRequest.getUsername().equals(userpwd)){
-            return ExceptionHandler.exceptionReturn(MonitorConfig.LoginFailCodeTypeWrongPassword,"WrongPassword");
+        if (LoginRequest == null) {
+            return ExceptionHandler.exceptionReturn(MonitorConfig.LoginFailCodeTypeUserNotFound, "UserNotFound");
+        } else if (!LoginRequest.getUsername().equals(userpwd)) {
+            return ExceptionHandler.exceptionReturn(MonitorConfig.LoginFailCodeTypeWrongPassword, "WrongPassword");
         }
 
         jsonResponse.put("code", MonitorConfig.interfaceReturnOK);
-        jsonResponse.put("msg","ok");
+        jsonResponse.put("msg", "ok");
         jsonResponse.put("data", null);
         System.out.println("Login Succeed");
         return jsonResponse;

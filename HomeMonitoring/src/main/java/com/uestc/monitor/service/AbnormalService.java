@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface AbnormalService {
     boolean insert(AbnormalRecord aRecord);
+
     List<abnormalResponseVO> selectMonthlyRecord(Integer userID);
 
 }

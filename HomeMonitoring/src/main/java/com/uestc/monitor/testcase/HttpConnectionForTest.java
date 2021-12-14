@@ -2,12 +2,14 @@ package com.uestc.monitor.testcase;
 
 
 import com.alibaba.fastjson.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class HttpConnectionForTest {
     public static JSONObject connect(JSONObject jsonRequest, String connect_URL) {
@@ -16,7 +18,7 @@ public class HttpConnectionForTest {
         try {
             System.out.println("jsonRequest:" + jsonRequest.toString().substring(0, 70));
         } catch (StringIndexOutOfBoundsException e) {
-            System.out.println("jsonRequest:" + jsonRequest.toString());
+            System.out.println("jsonRequest:" + jsonRequest);
         }
 
         try {
@@ -38,7 +40,7 @@ public class HttpConnectionForTest {
             writer.close();
             //接收服务器返回的 json
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.
-                    getInputStream(), "UTF-8"));
+                    getInputStream(), StandardCharsets.UTF_8));
             String line;
             sb = new StringBuilder();
             while ((line = br.readLine()) != null) {
@@ -54,7 +56,7 @@ public class HttpConnectionForTest {
         try {
             System.out.println(jsonRecieve.toString().substring(0, 100));
         } catch (StringIndexOutOfBoundsException e) {
-            System.out.println(jsonRecieve.toString());
+            System.out.println(jsonRecieve);
         }
         return jsonRecieve;
     }

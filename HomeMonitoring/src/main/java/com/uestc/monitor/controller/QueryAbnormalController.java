@@ -20,7 +20,7 @@ public class QueryAbnormalController {
     }
 
     @PostMapping("/queryAbnormalData")
-    public ResponseModel queryAbnormal(Integer userID){
+    public ResponseModel queryAbnormal(Integer userID) {
         List<abnormalResponseVO> aRecord = abnormalService.selectMonthlyRecord(userID);
         return new ResponseModel().setStatus(200).setMsg("ok").setData(aRecord);
     }

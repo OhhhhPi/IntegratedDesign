@@ -1,12 +1,12 @@
 package com.uestc.monitor.service;
 
-import com.uestc.monitor.mapper.TempHmdRecordMapper;
 import com.uestc.monitor.domain.pojo.TempHmdRecord;
-import com.uestc.monitor.service.TempService;
+import com.uestc.monitor.mapper.TempHmdRecordMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 @Service
 public class TempServiceImpl implements TempService {
     @Resource

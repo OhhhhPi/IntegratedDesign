@@ -1,12 +1,12 @@
 package com.uestc.monitor.service;
 
-import com.uestc.monitor.mapper.SmokeRecordMapper;
 import com.uestc.monitor.domain.pojo.SmokeRecord;
-import com.uestc.monitor.service.SmokeService;
+import com.uestc.monitor.mapper.SmokeRecordMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 @Service
 public class SmokeServiceImpl implements SmokeService {
     @Resource
