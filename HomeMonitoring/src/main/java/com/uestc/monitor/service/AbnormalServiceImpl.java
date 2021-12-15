@@ -1,7 +1,7 @@
 package com.uestc.monitor.service;
 
 import com.uestc.monitor.domain.pojo.AbnormalRecord;
-import com.uestc.monitor.domain.vo.abnormalResponseVO;
+import com.uestc.monitor.domain.dto.abnormalResponseDTO;
 import com.uestc.monitor.mapper.AbnormalRecordMapper;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class AbnormalServiceImpl implements AbnormalService {
     }
 
     @Override
-    public List<abnormalResponseVO> selectMonthlyRecord(Integer userID) {
+    public List<abnormalResponseDTO> selectMonthlyRecord(Integer userID) {
         return abnormalRecordMapper.selectMonthlyRecord(userID);
     }
 }

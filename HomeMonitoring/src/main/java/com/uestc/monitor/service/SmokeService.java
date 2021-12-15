@@ -16,4 +16,6 @@ public interface SmokeService {
     int updateByPrimaryKey(SmokeRecord record);
 
     SmokeRecord selectRecentRecord(Integer userid);
+
+    boolean queryModuleStatus(Integer userid);
 }

@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HumidityController {
+public class QueryTemperatureController {
 
     private final TempServiceImpl tempService;
 
     @Autowired
-    public HumidityController(TempServiceImpl tempService) {
+    public QueryTemperatureController(TempServiceImpl tempService) {
         this.tempService = tempService;
     }
 

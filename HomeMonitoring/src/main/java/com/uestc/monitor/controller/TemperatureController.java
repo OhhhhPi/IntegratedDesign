@@ -22,12 +22,12 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/temperature")
-public class temperatureController {
+public class TemperatureController {
     private final TempServiceImpl tempService;
     private final AbnormalServiceImpl abnormalService;
 
     @Autowired
-    public temperatureController(TempServiceImpl tempService, AbnormalServiceImpl abnormalService) {
+    public TemperatureController(TempServiceImpl tempService, AbnormalServiceImpl abnormalService) {
         this.tempService = tempService;
         this.abnormalService = abnormalService;
     }

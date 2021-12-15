@@ -2,6 +2,7 @@ package com.uestc.monitor.mapper;
 
 import com.uestc.monitor.domain.pojo.SmokeRecord;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface SmokeRecordMapper {
     int updateByPrimaryKey(SmokeRecord record);
 
     SmokeRecord selectRecentRecord(Integer userid);
+
+    boolean queryModuleStatus(@Param("userID") Integer userid);
 }

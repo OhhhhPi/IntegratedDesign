@@ -1,13 +1,17 @@
 package com.uestc.monitor.controller;
 
 import com.uestc.monitor.domain.model.ResponseModel;
-import com.uestc.monitor.domain.vo.abnormalResponseVO;
+import com.uestc.monitor.domain.dto.abnormalResponseDTO;
 import com.uestc.monitor.service.AbnormalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+/**
+ * 查询一个月内的异常数据
+ */
 
 @RestController
 public class QueryAbnormalController {
@@ -21,7 +25,7 @@ public class QueryAbnormalController {
 
     @PostMapping("/queryAbnormalData")
     public ResponseModel queryAbnormal(Integer userID) {
-        List<abnormalResponseVO> aRecord = abnormalService.selectMonthlyRecord(userID);
+        List<abnormalResponseDTO> aRecord = abnormalService.selectMonthlyRecord(userID);
         return new ResponseModel().setStatus(200).setMsg("ok").setData(aRecord);
     }
 

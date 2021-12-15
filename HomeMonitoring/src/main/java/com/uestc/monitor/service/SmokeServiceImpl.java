@@ -41,4 +41,9 @@ public class SmokeServiceImpl implements SmokeService {
     public SmokeRecord selectRecentRecord(Integer userid) {
         return smokeRecordMapper.selectRecentRecord(userid);
     }
+
+    @Override
+    public boolean queryModuleStatus(Integer userid) {
+        return smokeRecordMapper.queryModuleStatus(userid);
+    }
 }
