@@ -51,18 +51,18 @@ public class TemperatureController {
             boolean hms = jsonRequest.getBoolean("humiditySensor");
 
             if (temp > 32) {
-                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("temperature").setAbnormalContent("High");
+                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("温度异常").setAbnormalContent("温度过高，请检查温度状态");
                 abnormalService.insert(aRecord);
             } else if (temp < 5) {
-                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("temperature").setAbnormalContent("Low");
+                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("温度异常").setAbnormalContent("温度过低，请检查温度状态");
                 abnormalService.insert(aRecord);
             }
 
             if (hmd < 20) {
-                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("Humidity").setAbnormalContent("Low");
+                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("湿度异常").setAbnormalContent("湿度过低，请检查湿度状态");
                 abnormalService.insert(aRecord);
             } else if (hmd > 80) {
-                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("Humidity").setAbnormalContent("High");
+                AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("湿度异常").setAbnormalContent("湿度过高，请检查湿度状态");
                 abnormalService.insert(aRecord);
             }
 

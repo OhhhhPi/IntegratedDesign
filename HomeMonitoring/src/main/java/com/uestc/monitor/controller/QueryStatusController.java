@@ -1,6 +1,5 @@
 package com.uestc.monitor.controller;
 
-import com.uestc.monitor.config.MonitorConfig;
 import com.uestc.monitor.domain.model.ResponseModel;
 import com.uestc.monitor.domain.model.statusResponseModel;
 import com.uestc.monitor.domain.pojo.LocationRecord;
@@ -11,7 +10,6 @@ import com.uestc.monitor.service.LocationServiceImpl;
 import com.uestc.monitor.service.SmokeServiceImpl;
 import com.uestc.monitor.service.TempServiceImpl;
 import com.uestc.monitor.service.WindowServiceImpl;
-import com.uestc.monitor.util.ExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,22 +38,22 @@ public class QueryStatusController {
 
     @RequestMapping(path = "/queryStatus")
     public @ResponseBody
-    Object testGetState(@RequestParam Integer userID) {
+    Object testGetState(@RequestParam("userID") Integer userID) {
         TempHmdRecord TmpHmdRequest = tempService.selectRecentRecord(userID);
         if (TmpHmdRequest == null) {
-            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound, "TmpHmdRecordNotFound");
+            return new ResponseModel().setStatus(400).setMsg("TemperatureRecordNotFound");
         }
         SmokeRecord smokeRequest = smokeService.selectRecentRecord(userID);
         if (smokeRequest == null) {
-            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound, "SmokeRecordNotFound");
+            return new ResponseModel().setStatus(400).setMsg("SmokeRecordNotFound");
         }
         WindowRecord windowRequest = windowService.selectRecentRecord(userID);
         if (windowRequest == null) {
-            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound, "WindowRecordNotFound");
+            return new ResponseModel().setStatus(400).setMsg("WindowRecordNotFound");
         }
         LocationRecord locationRequest = locationService.selectRecentRecord(userID);
         if (locationRequest == null) {
-            return ExceptionHandler.exceptionReturn(MonitorConfig.queryStatusFailCodeTypeRecordNotFound, "LocationRequestNotFound");
+            return new ResponseModel().setStatus(400).setMsg("LocationRecordNotFound");
         }
 
         boolean warnFlag = false;

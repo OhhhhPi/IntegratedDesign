@@ -1,5 +1,6 @@
 package com.uestc.monitor.mapper;
 
+import com.uestc.monitor.domain.dto.moduleStatusDTO;
 import com.uestc.monitor.domain.pojo.TempHmdRecord;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -16,5 +17,5 @@ public interface TempHmdRecordMapper {
 
     int[] select12hTemp(Integer userid);
 
-    boolean[] queryModuleStatus(@Param("userID") Integer userid);
+    moduleStatusDTO queryModuleStatus(@Param("userID") Integer userid);
 }

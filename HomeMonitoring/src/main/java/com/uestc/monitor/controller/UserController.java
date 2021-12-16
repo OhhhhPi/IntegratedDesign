@@ -23,13 +23,13 @@ public class UserController {
     }
 
     @RequestMapping("/userCheck")
-    public ResponseModel CheckUser(@RequestParam Integer userID,@RequestParam String userpwd) {
+    public ResponseModel CheckUser(@RequestParam("userID") Integer userID, @RequestParam("userpwd") String userpwd) {
 
         MonitorUser LoginRequest = userService.selectByPrimaryKey(userID);
 
         if (LoginRequest == null) {
             return new ResponseModel().setStatus(400).setMsg("UserNotFound");
-        } else if (!LoginRequest.getUsername().equals(userpwd)) {
+        } else if (!LoginRequest.getUserpwd().equals(userpwd)) {
             return new ResponseModel().setStatus(400).setMsg("WrongPassword");
         }
 

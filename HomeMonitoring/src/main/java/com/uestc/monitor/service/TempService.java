@@ -1,5 +1,6 @@
 package com.uestc.monitor.service;
 
+import com.uestc.monitor.domain.dto.moduleStatusDTO;
 import com.uestc.monitor.domain.pojo.TempHmdRecord;
 
 
@@ -13,5 +14,5 @@ public interface TempService {
 
     int[] select12hTemp(Integer userid);
 
-    boolean[] queryModuleStatus(Integer userid);
+    moduleStatusDTO queryModuleStatus(Integer userid);
 }

@@ -1,5 +1,6 @@
 package com.uestc.monitor.service;
 
+import com.uestc.monitor.domain.dto.moduleStatusDTO;
 import com.uestc.monitor.domain.pojo.TempHmdRecord;
 import com.uestc.monitor.mapper.TempHmdRecordMapper;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class TempServiceImpl implements TempService {
     }
 
     @Override
-    public boolean[] queryModuleStatus(Integer userid){
+    public moduleStatusDTO queryModuleStatus(Integer userid) {
         return tempHmdRecordMapper.queryModuleStatus(userid);
     }
 }

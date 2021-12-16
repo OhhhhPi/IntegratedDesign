@@ -49,7 +49,7 @@
     <select id="queryModuleStatus" parameterType="java.lang.Integer" resultType="boolean">
         select smokeSensor
         from SmokeRecord
-        where SmokeRecord.userID=#{userID}
+        where SmokeRecord.userID = #{userID}
         limit 1
     </select>
 </mapper>

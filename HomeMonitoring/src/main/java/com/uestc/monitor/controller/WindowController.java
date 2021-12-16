@@ -24,11 +24,11 @@ public class WindowController {
 
     @PostMapping("getWindow")
     public @ResponseBody
-    ResponseModel getWindow(@RequestParam Integer userID, @RequestParam boolean Overlap) {
+    ResponseModel getWindow(@RequestParam("userID") Integer userID, @RequestParam("Overlap") boolean Overlap) {
         WindowRecord windowRecord = new WindowRecord().setUserid(userID).setOverlap(Overlap);
         windowService.insert(windowRecord);
         if (windowRecord.getOverlap()) {
-            abnormalService.insert(new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("Window").setAbnormalContent("Overlap Detected"));
+            abnormalService.insert(new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("翻窗异常").setAbnormalContent("检测到儿童翻窗行为，请及时核查"));
         }
         return new ResponseModel().setStatus(200).setMsg("ok");
     }

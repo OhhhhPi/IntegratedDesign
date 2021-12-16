@@ -10,13 +10,15 @@
         <result column="temperatureSensor" jdbcType="BIT" property="temperaturesensor"/>
         <result column="humiditySensor" jdbcType="BIT" property="humiditysensor"/>
     </resultMap>
+    <resultMap id="ModuleStatus" type="com.uestc.monitor.domain.dto.moduleStatusDTO">
+        <result column="temperatureSensor" jdbcType="BOOLEAN" property="temperatureSensorStatus"/>
+        <result column="humiditySensor" jdbcType="BOOLEAN" property="humiditySensorStatus"/>
+    </resultMap>
     <insert id="insert" parameterType="com.uestc.monitor.domain.pojo.TempHmdRecord">
         insert into TempHmdRecord (userID, temp, hmd,
-        time, temperatureSensor, humiditySensor
-        )
+                                   time, temperatureSensor, humiditySensor)
         values (#{record.userid}, #{record.temp}, #{record.hmd},
-        current_timestamp, #{record.temperaturesensor}, #{record.humiditysensor}
-        )
+                current_timestamp, #{record.temperaturesensor}, #{record.humiditysensor})
     </insert>
     <select id="selectRecentRecord" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select RecordID, userID, temp, hmd, time, temperatureSensor, humiditySensor
@@ -43,10 +45,10 @@
         order by RecordID desc
         limit 12
     </select>
-    <select id="queryModuleStatus" parameterType="java.lang.Integer" resultType="boolean">
+    <select id="queryModuleStatus" parameterType="java.lang.Integer" resultMap="ModuleStatus">
         select temperatureSensor, humiditySensor
         from TempHmdRecord
-        where TempHmdRecord.userID=#{userID}
+        where TempHmdRecord.userID = #{userID}
         limit 1
     </select>
 </mapper>

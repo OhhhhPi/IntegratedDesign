@@ -20,7 +20,7 @@ public class QueryTemperatureController {
 
     @PostMapping("/queryHumidity")
     public @ResponseBody
-    ResponseModel getHumidity(@RequestParam Integer userID) {
+    ResponseModel getHumidity(@RequestParam("userID") Integer userID) {
         int[] hmdRequest = tempService.select12hHmd(userID);
         if (hmdRequest.length == 0) return new ResponseModel().setStatus(400).setMsg("RecordNotFound");
         return new ResponseModel().setStatus(200).setMsg("ok").setData(hmdRequest);
@@ -28,7 +28,7 @@ public class QueryTemperatureController {
 
     @PostMapping("/queryTemperature")
     public @ResponseBody
-    ResponseModel getTemperature(@RequestParam Integer userID) {
+    ResponseModel getTemperature(@RequestParam("userID") Integer userID) {
         int[] tempRequest = tempService.select12hTemp(userID);
         if (tempRequest.length == 0) return new ResponseModel().setStatus(400).setMsg("RecordNotFound");
         return new ResponseModel().setStatus(200).setMsg("ok").setData(tempRequest);

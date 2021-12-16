@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class QueryModuleStatusController {
 
@@ -24,12 +25,11 @@ public class QueryModuleStatusController {
 
     @PostMapping("/queryModuleStatus")
     public @ResponseBody
-    ResponseModel queryModuleStatus(@RequestParam Integer userID){
+    ResponseModel queryModuleStatus(@RequestParam("userID") Integer userID) {
         moduleStatusDTO moduleStatus = new moduleStatusDTO().setWindowStatus(true).setLocationStatus(true).setVideoStatus(true);
-        boolean[] thStatus = tempService.queryModuleStatus(userID);
-        if(thStatus.length==0) return new ResponseModel().setStatus(400).setMsg("Record Not Found");
+        moduleStatusDTO thStatus = tempService.queryModuleStatus(userID);
         boolean sStatus = smokeService.queryModuleStatus(userID);
-        moduleStatus.setTemperatureSensorStatus(thStatus[0]).setHumiditySensorStatus(thStatus[1]).setSmokeSensorStatus(sStatus);
+        moduleStatus.setTemperatureSensorStatus(thStatus.isTemperatureSensorStatus()).setHumiditySensorStatus(thStatus.isHumiditySensorStatus()).setSmokeSensorStatus(sStatus);
         return new ResponseModel().setStatus(200).setMsg("ok").setData(moduleStatus);
     }
 }

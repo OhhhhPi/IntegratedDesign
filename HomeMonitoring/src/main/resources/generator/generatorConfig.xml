@@ -37,35 +37,41 @@
         </javaClientGenerator>
 
 
-        <table tableName="Monitor_user" domainObjectName="MonitorUser" enableCountByExample="false" enableUpdateByExample="false"
-                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="Monitor_user" domainObjectName="MonitorUser" enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="userID" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="TempHmdRecord" domainObjectName="TempHmdRecord" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="TempHmdRecord" domainObjectName="TempHmdRecord" enableCountByExample="false"
+               enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="RecordID" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="SmokeRecord" domainObjectName="SmokeRecord" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="SmokeRecord" domainObjectName="SmokeRecord" enableCountByExample="false"
+               enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="sRecordID" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="OverlapStatusRecord" domainObjectName="OverlapStatusRecord" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="OverlapStatusRecord" domainObjectName="OverlapStatusRecord" enableCountByExample="false"
+               enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="oRecordID" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table tableName="WindowRecord" domainObjectName="WindowRecord" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="WindowRecord" domainObjectName="WindowRecord" enableCountByExample="false"
+               enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="wRecordID" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table tableName="LocationRecord" domainObjectName="LocationRecord" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="LocationRecord" domainObjectName="LocationRecord" enableCountByExample="false"
+               enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="lRecordID" sqlStatement="Mysql" identity="true"/>
