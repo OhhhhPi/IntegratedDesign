@@ -9,12 +9,12 @@
     </resultMap>
     <insert id="insert">
         insert into WindowRecord (userID, Overlap, time)
-        values (#{wRecord.userid}, #{wRecord.Overlap}, current_timestamp)
+        values (#{wRecord.userID}, #{wRecord.Overlap}, current_timestamp)
     </insert>
     <select id="selectRecentRecord" parameterType="java.lang.Integer" resultMap="WindowRecord">
         select wRecordID, userID, Overlap, time
         from WindowRecord
-        where userID = #{userid,jdbcType=INTEGER}
+        where userID = #{userID,jdbcType=INTEGER}
         order by wRecordID desc
         limit 1
     </select>

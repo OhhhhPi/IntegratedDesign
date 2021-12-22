@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uestc.monitor.mapper.TempHmdRecordMapper">
     <resultMap id="BaseResultMap" type="com.uestc.monitor.domain.pojo.TempHmdRecord">
-        <id column="RecordID" jdbcType="BIGINT" property="recordid"/>
-        <result column="userID" jdbcType="INTEGER" property="userid"/>
+        <id column="RecordID" jdbcType="BIGINT" property="recordID"/>
+        <result column="userID" jdbcType="INTEGER" property="userID"/>
         <result column="temp" jdbcType="INTEGER" property="temp"/>
         <result column="hmd" jdbcType="INTEGER" property="hmd"/>
         <result column="time" jdbcType="TIMESTAMP" property="time"/>
-        <result column="temperatureSensor" jdbcType="BIT" property="temperaturesensor"/>
-        <result column="humiditySensor" jdbcType="BIT" property="humiditysensor"/>
+        <result column="temperatureSensor" jdbcType="BIT" property="temperatureSensor"/>
+        <result column="humiditySensor" jdbcType="BIT" property="humiditySensor"/>
     </resultMap>
     <resultMap id="ModuleStatus" type="com.uestc.monitor.domain.dto.moduleStatusDTO">
         <result column="temperatureSensor" jdbcType="BOOLEAN" property="temperatureSensorStatus"/>
@@ -17,13 +17,13 @@
     <insert id="insert" parameterType="com.uestc.monitor.domain.pojo.TempHmdRecord">
         insert into TempHmdRecord (userID, temp, hmd,
                                    time, temperatureSensor, humiditySensor)
-        values (#{record.userid}, #{record.temp}, #{record.hmd},
-                current_timestamp, #{record.temperaturesensor}, #{record.humiditysensor})
+        values (#{record.userID}, #{record.temp}, #{record.hmd},
+                current_timestamp, #{record.temperatureSensor}, #{record.humiditySensor})
     </insert>
     <select id="selectRecentRecord" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select RecordID, userID, temp, hmd, time, temperatureSensor, humiditySensor
         from TempHmdRecord
-        where userID = #{userid,jdbcType=INTEGER}
+        where userID = #{userID,jdbcType=INTEGER}
         order by RecordID desc
         limit 1
     </select>
@@ -31,7 +31,7 @@
         select hmd
         from TempHmdRecord
         where MID(time FROM -5 FOR 2) = '00'
-          and userID = #{userid,jdbcType=INTEGER}
+          and userID = #{userID,jdbcType=INTEGER}
         group by MID(time from -8 for 2)
         order by RecordID desc
         limit 12

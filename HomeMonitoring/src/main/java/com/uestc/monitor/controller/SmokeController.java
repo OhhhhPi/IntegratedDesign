@@ -6,7 +6,6 @@ import com.uestc.monitor.domain.pojo.SmokeRecord;
 import com.uestc.monitor.service.AbnormalServiceImpl;
 import com.uestc.monitor.service.SmokeServiceImpl;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,15 +24,15 @@ public class SmokeController {
     }
 
     @RequestMapping("/setSmoke")
-    public ResponseModel setSmoke(@RequestParam("userID") Integer userID, @RequestParam("smoke") boolean smoke, @RequestParam("smokeSensor") boolean smokeSensor) {
+    public ResponseModel setSmoke(SmokeRecord smokeRecord) {
 
-        SmokeRecord sRecord = new SmokeRecord().setUserid(userID).setSmoke(smoke).setSmokesensor(smokeSensor);
+        smokeService.insert(smokeRecord);
 
-        smokeService.insert(sRecord);
+        if (smokeRecord.getSmoke())
+            abnormalService.insert(new AbnormalRecord().setAbnormalUserID(smokeRecord.getUserID()).setAbnormalType("烟雾异常").setAbnormalContent("存在烟雾，请检查烟雾状态"));
 
-        if (sRecord.getSmoke())
-            abnormalService.insert(new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("烟雾异常").setAbnormalContent("存在烟雾，请检查烟雾状态"));
-
+        if (!smokeRecord.getSmokeSensor())
+            abnormalService.insert(new AbnormalRecord().setAbnormalUserID(smokeRecord.getUserID()).setAbnormalType("烟雾传感器异常"));
         return new ResponseModel().setStatus(200).setMsg("ok");
     }
 

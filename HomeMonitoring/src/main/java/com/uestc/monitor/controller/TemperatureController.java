@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * 接收树莓派传来的温湿度数据并且存储到数据表中
+ * 接收树莓派传来的温湿度数据并且存储到数据表中(已废弃)
  */
 
 @RestController
@@ -34,6 +34,7 @@ public class TemperatureController {
     @RequestMapping("/setTemp")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public JSONObject setTemp(HttpServletRequest request) {
+        System.out.println(request);
         try {
             JSONObject jsonRequest = RequestHandler.receiveJson(request);
             System.out.println(jsonRequest);
@@ -48,6 +49,7 @@ public class TemperatureController {
             int userID = jsonRequest.getIntValue("userID");
             boolean tss = jsonRequest.getBoolean("temperatureSensor");
             boolean hms = jsonRequest.getBoolean("humiditySensor");
+
 
             if (temp > 32) {
                 AbnormalRecord aRecord = new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("温度异常").setAbnormalContent("温度过高，请检查温度状态");
@@ -68,9 +70,9 @@ public class TemperatureController {
             TempHmdRecord tempHumRecord = new TempHmdRecord();
             tempHumRecord.setTemp(temp);
             tempHumRecord.setHmd(hmd);
-            tempHumRecord.setUserid(userID);
-            tempHumRecord.setTemperaturesensor(tss);
-            tempHumRecord.setHumiditysensor(hms);
+            tempHumRecord.setUserID(userID);
+            tempHumRecord.setTemperatureSensor(tss);
+            tempHumRecord.setHumiditySensor(hms);
 
             tempService.insert(tempHumRecord);
 

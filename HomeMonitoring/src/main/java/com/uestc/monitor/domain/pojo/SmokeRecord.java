@@ -8,13 +8,13 @@ import java.util.Date;
 @Data
 @Accessors(chain = true)
 public class SmokeRecord {
-    private Long srecordid;
+    private Long sRecordID;
 
-    private Integer userid;
+    private Integer userID;
 
     private Boolean smoke;
 
     private Date time;
 
-    private Boolean smokesensor;
+    private Boolean smokeSensor;
 }

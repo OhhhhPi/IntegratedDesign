@@ -10,9 +10,9 @@ import java.util.Date;
 public class WindowRecord {
     private Long wrecordid;
 
-    private Integer userid;
+    private Integer userID;
 
-    private Boolean Overlap;
+    private boolean Overlap;
 
     private Date time;
 }

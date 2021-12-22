@@ -58,12 +58,12 @@ public class QueryStatusController {
 
         boolean warnFlag = false;
         int temp = TmpHmdRequest.getTemp();
-        boolean tss = TmpHmdRequest.getTemperaturesensor();
+        boolean tss = TmpHmdRequest.getTemperatureSensor();
         int hmd = TmpHmdRequest.getHmd();
-        boolean hss = TmpHmdRequest.getHumiditysensor();
+        boolean hss = TmpHmdRequest.getHumiditySensor();
         boolean smk = smokeRequest.getSmoke();
-        boolean sms = smokeRequest.getSmokesensor();
-        boolean ol = windowRequest.getOverlap();
+        boolean sms = smokeRequest.getSmokeSensor();
+        boolean ol = windowRequest.isOverlap();
         boolean lct = locationRequest.getLocation();
         if (smk || ol) {
             warnFlag = true;

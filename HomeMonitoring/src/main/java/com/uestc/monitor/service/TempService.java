@@ -8,11 +8,11 @@ public interface TempService {
 
     int insert(TempHmdRecord record);
 
-    TempHmdRecord selectRecentRecord(Integer userid);
+    TempHmdRecord selectRecentRecord(Integer userID);
 
-    int[] select12hHmd(Integer userid);
+    int[] select12hHmd(Integer userID);
 
-    int[] select12hTemp(Integer userid);
+    int[] select12hTemp(Integer userID);
 
-    moduleStatusDTO queryModuleStatus(Integer userid);
+    moduleStatusDTO queryModuleStatus(Integer userID);
 }

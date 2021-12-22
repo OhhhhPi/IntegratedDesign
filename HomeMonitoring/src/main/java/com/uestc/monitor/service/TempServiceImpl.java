@@ -18,22 +18,22 @@ public class TempServiceImpl implements TempService {
     }
 
     @Override
-    public TempHmdRecord selectRecentRecord(Integer userid) {
-        return tempHmdRecordMapper.selectRecentRecord(userid);
+    public TempHmdRecord selectRecentRecord(Integer userID) {
+        return tempHmdRecordMapper.selectRecentRecord(userID);
     }
 
     @Override
-    public int[] select12hHmd(Integer userid) {
-        return tempHmdRecordMapper.select12hHmd(userid);
+    public int[] select12hHmd(Integer userID) {
+        return tempHmdRecordMapper.select12hHmd(userID);
     }
 
     @Override
-    public int[] select12hTemp(Integer userid) {
-        return tempHmdRecordMapper.select12hTemp(userid);
+    public int[] select12hTemp(Integer userID) {
+        return tempHmdRecordMapper.select12hTemp(userID);
     }
 
     @Override
-    public moduleStatusDTO queryModuleStatus(Integer userid) {
-        return tempHmdRecordMapper.queryModuleStatus(userid);
+    public moduleStatusDTO queryModuleStatus(Integer userID) {
+        return tempHmdRecordMapper.queryModuleStatus(userID);
     }
 }

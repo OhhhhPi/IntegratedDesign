@@ -17,7 +17,7 @@ public class WindowServiceImpl implements WindowService {
     }
 
     @Override
-    public WindowRecord selectRecentRecord(Integer userid) {
-        return windowRecordMapper.selectRecentRecord(userid);
+    public WindowRecord selectRecentRecord(Integer userID) {
+        return windowRecordMapper.selectRecentRecord(userID);
     }
 }

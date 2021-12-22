@@ -8,17 +8,17 @@ import java.util.List;
 
 @Mapper
 public interface SmokeRecordMapper {
-    int deleteByPrimaryKey(Long srecordid);
+    int deleteByPrimaryKey(Long sRecordID);
 
     int insert(SmokeRecord record);
 
-    SmokeRecord selectByPrimaryKey(Long srecordid);
+    SmokeRecord selectByPrimaryKey(Long sRecordID);
 
     List<SmokeRecord> selectAll();
 
     int updateByPrimaryKey(SmokeRecord record);
 
-    SmokeRecord selectRecentRecord(Integer userid);
+    SmokeRecord selectRecentRecord(Integer userID);
 
-    boolean queryModuleStatus(@Param("userID") Integer userid);
+    boolean queryModuleStatus(@Param("userID") Integer userID);
 }

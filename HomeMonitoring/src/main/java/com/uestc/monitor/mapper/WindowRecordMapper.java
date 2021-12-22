@@ -10,5 +10,5 @@ public interface WindowRecordMapper {
 
     int insert(@Param("wRecord") WindowRecord wRecord);
 
-    WindowRecord selectRecentRecord(Integer userid);
+    WindowRecord selectRecentRecord(Integer userID);
 }

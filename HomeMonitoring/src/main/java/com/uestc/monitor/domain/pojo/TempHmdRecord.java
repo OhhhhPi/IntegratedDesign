@@ -8,9 +8,9 @@ import java.util.Date;
 @Data
 @Accessors(chain = true)
 public class TempHmdRecord {
-    private Long recordid;
+    private Long recordID;
 
-    private Integer userid;
+    private Integer userID;
 
     private Integer temp;
 
@@ -18,7 +18,7 @@ public class TempHmdRecord {
 
     private Date time;
 
-    private Boolean temperaturesensor;
+    private Boolean temperatureSensor;
 
-    private Boolean humiditysensor;
+    private Boolean humiditySensor;
 }

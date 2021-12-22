@@ -7,7 +7,6 @@ import com.uestc.monitor.service.AbnormalServiceImpl;
 import com.uestc.monitor.service.WindowServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,11 +23,10 @@ public class WindowController {
 
     @PostMapping("/setWindow")
     public @ResponseBody
-    ResponseModel setWindow(@RequestParam("userID") Integer userID, @RequestParam("Overlap") boolean Overlap) {
-        WindowRecord windowRecord = new WindowRecord().setUserid(userID).setOverlap(Overlap);
+    ResponseModel setWindow(WindowRecord windowRecord) {
         windowService.insert(windowRecord);
-        if (windowRecord.getOverlap()) {
-            abnormalService.insert(new AbnormalRecord().setAbnormalUserID(userID).setAbnormalType("翻窗异常").setAbnormalContent("检测到儿童翻窗行为，请及时核查"));
+        if (windowRecord.isOverlap()) {
+            abnormalService.insert(new AbnormalRecord().setAbnormalUserID(windowRecord.getUserID()).setAbnormalType("翻窗异常").setAbnormalContent("检测到儿童翻窗行为，请及时核查"));
         }
         return new ResponseModel().setStatus(200).setMsg("ok");
     }

@@ -11,11 +11,11 @@ public interface TempHmdRecordMapper {
 
     int insert(@Param("record") TempHmdRecord record);
 
-    TempHmdRecord selectRecentRecord(Integer userid);
+    TempHmdRecord selectRecentRecord(Integer userID);
 
-    int[] select12hHmd(Integer userid);
+    int[] select12hHmd(Integer userID);
 
-    int[] select12hTemp(Integer userid);
+    int[] select12hTemp(Integer userID);
 
-    moduleStatusDTO queryModuleStatus(@Param("userID") Integer userid);
+    moduleStatusDTO queryModuleStatus(@Param("userID") Integer userID);
 }
