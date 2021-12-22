@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    username: root
+    username: chi1t0n
     password: lykang2000
     url: jdbc:mysql://chi1t0n.com:3306/monitoring?serverTimezone=UTC&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
