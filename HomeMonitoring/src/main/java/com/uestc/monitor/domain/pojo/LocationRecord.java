@@ -3,28 +3,28 @@ package com.uestc.monitor.domain.pojo;
 import java.util.Date;
 
 public class LocationRecord {
-    private Long lrecordid;
+    private Long lRecordID;
 
-    private Integer userid;
+    private Integer userID;
 
     private Boolean location;
 
     private Date time;
 
-    public Long getLrecordid() {
-        return lrecordid;
+    public Long getlRecordID() {
+        return lRecordID;
     }
 
-    public void setLrecordid(Long lrecordid) {
-        this.lrecordid = lrecordid;
+    public void setlRecordID(Long lRecordID) {
+        this.lRecordID = lRecordID;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getUserID() {
+        return userID;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserID(Integer userID) {
+        this.userID = userID;
     }
 
     public Boolean getLocation() {

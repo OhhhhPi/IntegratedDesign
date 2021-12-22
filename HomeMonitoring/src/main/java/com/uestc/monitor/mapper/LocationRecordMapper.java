@@ -2,20 +2,11 @@ package com.uestc.monitor.mapper;
 
 import com.uestc.monitor.domain.pojo.LocationRecord;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface LocationRecordMapper {
-    int deleteByPrimaryKey(Long lrecordid);
+    int insert(@Param("lRecord") LocationRecord lRecord);
 
-    int insert(LocationRecord record);
-
-    LocationRecord selectByPrimaryKey(Long lrecordid);
-
-    List<LocationRecord> selectAll();
-
-    int updateByPrimaryKey(LocationRecord record);
-
-    LocationRecord selectRecentRecord(Integer userid);
+    LocationRecord selectRecentRecord(Integer userID);
 }
