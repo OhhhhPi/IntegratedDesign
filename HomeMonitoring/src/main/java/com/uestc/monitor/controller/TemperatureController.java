@@ -21,7 +21,6 @@ import java.io.IOException;
  */
 
 @RestController
-@RequestMapping("/temperature")
 public class TemperatureController {
     private final TempServiceImpl tempService;
     private final AbnormalServiceImpl abnormalService;
@@ -32,9 +31,9 @@ public class TemperatureController {
         this.abnormalService = abnormalService;
     }
 
-    @RequestMapping("/getTemp")
+    @RequestMapping("/setTemp")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public JSONObject getTemp(HttpServletRequest request) {
+    public JSONObject setTemp(HttpServletRequest request) {
         try {
             JSONObject jsonRequest = RequestHandler.receiveJson(request);
             System.out.println(jsonRequest);

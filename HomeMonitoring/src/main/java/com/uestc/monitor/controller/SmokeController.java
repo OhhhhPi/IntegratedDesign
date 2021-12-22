@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 接收树莓派的烟雾传感器传来的数据并保存记录到数据库中
+ * 如果有烟雾还会记录异常数据到数据库中
+ */
+
 @RestController
-@RequestMapping("/smoke")
 public class SmokeController {
     private final SmokeServiceImpl smokeService;
     private final AbnormalServiceImpl abnormalService;
@@ -20,8 +24,8 @@ public class SmokeController {
         this.abnormalService = abnormalService;
     }
 
-    @RequestMapping("/getSmoke")
-    public ResponseModel getSmoke(@RequestParam("userID") Integer userID, @RequestParam("smoke") boolean smoke, @RequestParam("smokeSensor") boolean smokeSensor) {
+    @RequestMapping("/setSmoke")
+    public ResponseModel setSmoke(@RequestParam("userID") Integer userID, @RequestParam("smoke") boolean smoke, @RequestParam("smokeSensor") boolean smokeSensor) {
 
         SmokeRecord sRecord = new SmokeRecord().setUserid(userID).setSmoke(smoke).setSmokesensor(smokeSensor);
 
