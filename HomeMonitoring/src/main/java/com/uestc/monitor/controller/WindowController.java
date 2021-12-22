@@ -22,7 +22,7 @@ public class WindowController {
         this.abnormalService = abnormalService;
     }
 
-    @PostMapping("getWindow")
+    @PostMapping("/getWindow")
     public @ResponseBody
     ResponseModel getWindow(@RequestParam("userID") Integer userID, @RequestParam("Overlap") boolean Overlap) {
         WindowRecord windowRecord = new WindowRecord().setUserid(userID).setOverlap(Overlap);
